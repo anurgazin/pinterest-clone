@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { login } from "@/services/auth";
 
 export default function LoginForm() {
   const [email, setEmail] = useState("");
@@ -15,20 +16,14 @@ export default function LoginForm() {
       // Your API call here
       // Upon successful login, navigate to the dashboard
 
-      const response = await fetch("http://localhost:8000/users/login", {
-        method: "POST",
-        mode: "cors",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: email, password: password }),
-      });
-      const data = await response.json();
+      const response = await login(email, password);
+      const data = response;
       console.log(data);
       router.push("/dashboard");
     } catch (error) {
       console.error("Error logging in:", error);
     }
   };
-
   return (
     <form onSubmit={handleSubmit}>
       <label>Email:</label>
