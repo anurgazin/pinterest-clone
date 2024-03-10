@@ -1,4 +1,5 @@
 import axios from "axios";
+import { getCookie, removeCookie, setCookie } from "typescript-cookie";
 
 const USERS_API_URL = "http://localhost:8000/users/";
 
@@ -20,12 +21,17 @@ export const login = async (email: string, password: string) => {
     email,
     password,
   });
-  if (res.data.token) {
-    sessionStorage.setItem("user", JSON.stringify(res.data));
+  if (res.data.user) {
+    setCookie("user", JSON.stringify(res.data.user));
   }
   return res.data;
 };
 
 export const logout = () => {
-  sessionStorage.removeItem("accessToken");
+  removeCookie("user");
+};
+
+export const getUsername = () => {
+  const data = JSON.parse(getCookie("user") || "");
+  return data.username;
 };

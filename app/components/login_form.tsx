@@ -18,10 +18,21 @@ export default function LoginForm() {
 
       const response = await login(email, password);
       const data = response;
-      console.log(data);
-      router.push("/dashboard");
+      if (data === "Incorrect Password/Username") {
+        alert(data);
+      } else if (data === "User not found") {
+        alert(data);
+      } else {
+        router.push("/dashboard");
+      }
     } catch (error) {
-      console.error("Error logging in:", error);
+      if (error instanceof Error) {
+        if (error.message === "Request failed with status code 404") {
+          alert("User not found");
+        } else if (error.message === "Request failed with status code 401") {
+          alert("Incorrect Password/Username");
+        }
+      }
     }
   };
   return (
