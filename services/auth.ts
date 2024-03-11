@@ -32,6 +32,10 @@ export const logout = () => {
 };
 
 export const getUsername = () => {
-  const data = JSON.parse(getCookie("user") || "");
-  return data.username;
+  const user = getCookie("user");
+  if (user) {
+    const data = JSON.parse(user);
+    return data.username;
+  }
+  return "";
 };
