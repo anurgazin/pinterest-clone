@@ -26,9 +26,8 @@ export default function RegistrationForm() {
           password: password,
         }),
       });
-      const data = await response.json();
-      console.log(data);
-      router.push("/dashboard");
+      await response.json();
+      router.push("/login");
     } catch (error) {
       console.error("Error logging in:", error);
     }
