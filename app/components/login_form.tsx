@@ -2,11 +2,14 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useDispatch } from "react-redux";
+import { login as loginRedux } from "@/lib/slicers/userSlicer";
 import { login } from "@/services/auth";
 
 export default function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
   const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -23,6 +26,7 @@ export default function LoginForm() {
       } else if (data === "User not found") {
         alert(data);
       } else {
+        dispatch(loginRedux(data.user));
         router.push("/dashboard");
       }
     } catch (error) {

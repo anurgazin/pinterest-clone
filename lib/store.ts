@@ -1,8 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
+import userReducer from "./slicers/userSlicer";
 
 export const makeStore = () => {
   return configureStore({
-    reducer: {},
+    reducer: {
+      user: userReducer,
+    },
   });
 };
 

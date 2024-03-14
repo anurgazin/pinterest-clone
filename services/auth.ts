@@ -31,11 +31,11 @@ export const logout = () => {
   removeCookie("user");
 };
 
-export const getUsername = () => {
+export const getUser = () => {
   const user = getCookie("user");
   if (user) {
     const data = JSON.parse(user);
-    return data.username;
+    return data;
   }
-  return "";
+  return null;
 };
