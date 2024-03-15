@@ -1,0 +1,11 @@
+.login_container {
+  position: "relative";
+}
+.login_page_div {
+  display: flex;
+  flex-flow: column wrap;
+  align-content: center;
+  justify-content: center;
+  margin-top: 100px;
+  margin-bottom: 100px;
+}

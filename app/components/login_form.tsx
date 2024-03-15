@@ -6,6 +6,8 @@ import { useDispatch } from "react-redux";
 import { login as loginRedux } from "@/lib/slicers/userSlicer";
 import { login } from "@/services/auth";
 
+import styles from "@/app/components/style/login_form.module.css";
+
 export default function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -14,11 +16,7 @@ export default function LoginForm() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Call your API endpoint to authenticate the user
     try {
-      // Your API call here
-      // Upon successful login, navigate to the dashboard
-
       const response = await login(email, password);
       const data = response;
       if (data === "Incorrect Password/Username") {
@@ -40,25 +38,33 @@ export default function LoginForm() {
     }
   };
   return (
-    <form onSubmit={handleSubmit}>
-      <label>Email:</label>
-      <input
-        type="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <br />
-      <br />
-      <label>
-        Password:
+    <div className={styles.login_form_container}>
+      <form className={styles.login_form_content} onSubmit={handleSubmit}>
+        <h1>Login</h1>
+        <label htmlFor="login-form-input-email" className="login-form-label-email">Email:</label>
         <input
+          id="login-form-input-email"
+          type="email"
+          className="login-form-input-email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <br />
+        <label htmlFor="login-form-input-password" className="login-form-label-password">Password:</label>
+        <input
+          id="login-form-input-password"
           type="password"
+          className="login-form-input-password"
+          placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-      </label>
-      <br />
-      <button type="submit">Login</button>
-    </form>
+        <br />
+        <button className={styles.login_form_submit} type="submit">
+          Login
+        </button>
+      </form>
+    </div>
   );
 }

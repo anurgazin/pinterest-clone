@@ -1,0 +1,29 @@
+.login_form_container {
+  background-color: white;
+  width: 350px;
+  height: 450px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 3px -1px rgba(0, 0, 0, 0.5);
+
+  display: flex;
+  flex-direction: column wrap;
+  align-content: center;
+  justify-content: center;
+}
+
+.login_form_content {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+}
+
+.login_form_submit {
+  background-color: #f30d19;
+  border-radius: 10px;
+  color: white;
+  border: none;
+  font-size: 16px;
+  font-weight: 700;
+  width: 100%;
+  height: 40px;
+}

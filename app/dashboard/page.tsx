@@ -7,7 +7,7 @@ export default function DashboardPage() {
   const user = useSelector(selectUser);
   if (user.user) {
     return (
-      <div className="dashboard-div">
+      <div className="dashboard-container">
         <h1>
           Welcome <span className="user_name">{user.user.username}</span>
         </h1>
