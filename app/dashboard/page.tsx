@@ -5,7 +5,7 @@ import { selectUser } from "@/lib/slicers/userSlicer";
 import { redirect } from "next/navigation";
 export default function DashboardPage() {
   const user = useSelector(selectUser);
-  if (user.user) {
+  if (user.user.token) {
     return (
       <div className="dashboard-container">
         <h1>

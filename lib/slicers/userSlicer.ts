@@ -1,8 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-
-import { getUser } from "@/services/auth";
-
 import { UserType } from "@/classes/userType";
+import { getUser } from "@/services/auth";
 
 // Define the initial state interface
 interface UserState {

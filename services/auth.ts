@@ -1,5 +1,6 @@
 import axios from "axios";
 import { getCookie, removeCookie, setCookie } from "typescript-cookie";
+import { UserType } from "@/classes/userType";
 
 const USERS_API_URL = "http://localhost:8000/users/";
 
@@ -32,10 +33,12 @@ export const logout = () => {
 };
 
 export const getUser = () => {
-  const user = getCookie("user");
-  if (user) {
-    const data = JSON.parse(user);
-    return data;
+  if (typeof window !== "undefined") {
+    const data = getCookie("user");
+    if (data) {
+      const user = JSON.parse(data);
+      return user;
+    }
   }
-  return null;
+  return UserType;
 };
