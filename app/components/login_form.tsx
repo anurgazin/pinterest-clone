@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { login as loginRedux } from "@/lib/slicers/userSlicer";
 import { login } from "@/services/auth";
+import Link from "next/link";
 
 import styles from "@/app/components/style/login_form.module.css";
 
@@ -41,29 +42,33 @@ export default function LoginForm() {
     <div className={styles.login_form_container}>
       <form className={styles.login_form_content} onSubmit={handleSubmit}>
         <h1>Login</h1>
-        <label htmlFor="login-form-input-email" className="login-form-label-email">Email:</label>
         <input
           id="login-form-input-email"
           type="email"
-          className="login-form-input-email"
+          className={styles.login_form_input}
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        <br />
-        <label htmlFor="login-form-input-password" className="login-form-label-password">Password:</label>
         <input
           id="login-form-input-password"
           type="password"
-          className="login-form-input-password"
+          className={styles.login_form_input}
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <br />
         <button className={styles.login_form_submit} type="submit">
           Login
         </button>
+        <div className={styles.login_form_reg}>
+          <div className="login-form-reg-p">
+            Don&apos;t have an account yet?
+          </div>
+          <Link href="/registration" className="login-form-reg-link">
+            Create Account
+          </Link>
+        </div>
       </form>
     </div>
   );
