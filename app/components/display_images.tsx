@@ -6,9 +6,10 @@ import { getImages } from "@/services/images";
 import Image from "next/image";
 import { ImageType } from "@/classes/imageType";
 
+import styles from "@/app/components/style/display_images.module.css";
+
 export default function DisplayImages() {
   const [images, setImages] = useState<ImageType[] | null>(null);
-  const router = useRouter();
 
   useEffect(() => {
     const gettingImages = async () => {
@@ -17,22 +18,37 @@ export default function DisplayImages() {
     };
 
     gettingImages();
-  }, [router]);
+  }, []);
 
   return (
     <div>
-      <div>
+      <div className={styles.display_images_container}>
         {images ? (
           images.map((image) => (
-            <div key={image.image_id}>
+            <div className={styles.display_images_item} key={image.image_id}>
               <Image
                 src={image.location}
                 width={0}
                 height={0}
                 sizes="100vw"
-                style={{ width: "25%", height: "auto" }}
+                style={{
+                  width: "100%",
+                  height: "auto",
+                  borderRadius: "16px",
+                }}
                 alt={image.name}
               ></Image>
+              <div className={styles.display_images_item_description}>
+                {image.tags ? (
+                  image.tags.map((tag) => (
+                    <p className={styles.display_images_item_tag} key={tag}>
+                      {tag}
+                    </p>
+                  ))
+                ) : (
+                  <p></p>
+                )}
+              </div>
             </div>
           ))
         ) : (
