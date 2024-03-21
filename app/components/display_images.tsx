@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
 import { getImages } from "@/services/images";
 import Image from "next/image";
 import { ImageType } from "@/classes/imageType";

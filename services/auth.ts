@@ -40,5 +40,5 @@ export const getUser = () => {
       return user;
     }
   }
-  return UserType;
+  return null;
 };

@@ -6,7 +6,7 @@
 }
 
 .display_images_item {
-  position: relative;
+  padding: 2.5px;
   width: 100%;
   background-color: #fff;
   border-radius: 16px;

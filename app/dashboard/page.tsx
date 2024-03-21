@@ -2,19 +2,20 @@
 import DisplayImages from "../components/display_images";
 import { useSelector } from "react-redux";
 import { selectUser } from "@/lib/slicers/userSlicer";
-import { redirect } from "next/navigation";
+import Link from "next/link";
 export default function DashboardPage() {
   const user = useSelector(selectUser);
-  if (user.user.token) {
-    return (
-      <div className="dashboard-container">
-        <h1>
-          Welcome <span className="user_name">{user.user.username}</span>
-        </h1>
-        <DisplayImages />
-      </div>
-    );
-  } else {
-    redirect("/login");
-  }
+  return (
+    <div className="dashboard-container">
+      {user && user.user ? (
+        <>
+          <DisplayImages />
+        </>
+      ) : (
+        <li>
+          <Link href="/login">Please, login to watch dashboard</Link>
+        </li>
+      )}
+    </div>
+  );
 }
