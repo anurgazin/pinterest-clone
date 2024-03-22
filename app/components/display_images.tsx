@@ -29,6 +29,7 @@ export default function DisplayImages() {
                 src={image.location}
                 width={0}
                 height={0}
+                priority
                 sizes="100vw"
                 style={{
                   width: "100%",

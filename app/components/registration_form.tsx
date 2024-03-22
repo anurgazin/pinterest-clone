@@ -2,34 +2,31 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { register } from "@/services/auth";
+import { useDispatch } from "react-redux";
+import { login as loginRedux } from "@/lib/slicers/userSlicer";
 
 export default function RegistrationForm() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
   const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Call your API endpoint to authenticate the user
     try {
-      // Your API call here
-      // Upon successful login, navigate to the dashboard
-
-      const response = await fetch("http://localhost:8000/users/register", {
-        method: "POST",
-        mode: "cors",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          username: username,
-          email: email,
-          password: password,
-        }),
-      });
-      await response.json();
-      router.push("/login");
+      const { message, user } = await register(username, email, password);
+      if (user.user) {
+        dispatch(loginRedux(user.user));
+        router.push("/dashboard");
+      }
     } catch (error) {
-      console.error("Error logging in:", error);
+      if (error instanceof Error) {
+        if (error.message === "Request failed with status code 409") {
+          alert("User with the same email already exists");
+        }
+      }
     }
   };
 
