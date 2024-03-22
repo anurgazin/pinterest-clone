@@ -41,7 +41,7 @@ export default function LoginForm() {
   return (
     <div className={styles.login_form_container}>
       <form className={styles.login_form_content} onSubmit={handleSubmit}>
-        <h1>Login</h1>
+        <h1 className={styles.login_form_h1}>Login</h1>
         <input
           id="login-form-input-email"
           type="email"

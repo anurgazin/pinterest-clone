@@ -37,7 +37,7 @@ export default function DisplayImages() {
                   borderRadius: "16px",
                 }}
                 alt={image.name}
-              ></Image>
+              />
               <div className={styles.display_images_item_description}>
                 {image.tags ? (
                   image.tags.map((tag) => (
