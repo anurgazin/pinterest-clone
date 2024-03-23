@@ -23,6 +23,7 @@
 .display_images_item_tag {
   display: inline-block;
   margin-right: 5px;
+  margin-top: 5px;
   background-color: rgb(220 38 38);
   padding: 2px 8px;
   border-radius: 16px;

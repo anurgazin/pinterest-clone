@@ -1,0 +1,12 @@
+.registration_container {
+    position: "relative";
+  }
+  .registration_page_div {
+    display: flex;
+    flex-flow: column wrap;
+    align-content: center;
+    justify-content: center;
+    margin-top: 100px;
+    margin-bottom: 100px;
+  }
+  

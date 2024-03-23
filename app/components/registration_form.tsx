@@ -5,6 +5,8 @@ import { useRouter } from "next/navigation";
 import { register } from "@/services/auth";
 import { useDispatch } from "react-redux";
 import { login as loginRedux } from "@/lib/slicers/userSlicer";
+import styles from "@/app/components/style/registration_form.module.css";
+import Link from "next/link";
 
 export default function RegistrationForm() {
   const [username, setUsername] = useState("");
@@ -31,32 +33,45 @@ export default function RegistrationForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>Email:</label>
-      <input
-        type="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <br />
-      <br />
-      <label>Password:</label>
-      <input
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <br />
-      <br />
-      <label>Username:</label>
-      <input
-        type="username"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-      />
-      <br />
-      <br />
-      <button type="submit">Login</button>
-    </form>
+    <div className={styles.registration_form_container}>
+      <form
+        className={styles.registration_form_content}
+        onSubmit={handleSubmit}
+      >
+        <h1 className={styles.registration_form_h1}>Registration</h1>
+        <input
+          type="email"
+          value={email}
+          placeholder="E-mail"
+          className={styles.registration_form_input}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <input
+          type="username"
+          value={username}
+          placeholder="Username"
+          className={styles.registration_form_input}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+        <input
+          type="password"
+          value={password}
+          placeholder="Password"
+          className={styles.registration_form_input}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <button className={styles.registration_form_submit} type="submit">
+          Login
+        </button>
+        <div className={styles.registration_form_log}>
+          <div className="registration-form-log-p">
+            Already have an account?
+          </div>
+          <Link href="/login" className={styles.registration_form_log_link}>
+            Login
+          </Link>
+        </div>
+      </form>
+    </div>
   );
 }
