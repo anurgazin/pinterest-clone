@@ -8,6 +8,14 @@ export const getImages = async () => {
   return response.data.images;
 };
 
+export const getImagesByTags = async (tags: string[]) => {
+  const response = await axios.get(API_URL, {
+    params: { tags: tags },
+    headers: authHeader(),
+  });
+  return response.data.images;
+};
+
 export const addImage = async (
   image: File,
   image_name: string,

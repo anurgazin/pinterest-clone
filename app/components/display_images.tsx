@@ -1,29 +1,27 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { getImages } from "@/services/images";
+import { useEffect } from "react";
+import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import Image from "next/image";
 import { ImageType } from "@/classes/imageType";
 
 import styles from "@/app/components/style/display_images.module.css";
+import { fetchImages, selectImages } from "@/lib/slicers/imageSlicer";
+import { useSelector } from "react-redux";
 
 export default function DisplayImages() {
-  const [images, setImages] = useState<ImageType[] | null>(null);
+  const dispatch = useAppDispatch();
+  const images = useAppSelector(selectImages);
+  const status = useSelector((state: any) => state.image.status);
 
   useEffect(() => {
-    const gettingImages = async () => {
-      const data = await getImages();
-      setImages(data);
-    };
-
-    gettingImages();
-  }, []);
-
+    dispatch(fetchImages([]));
+  }, [dispatch]);
   return (
     <div>
       <div className={styles.display_images_container}>
-        {images ? (
-          images.map((image) => (
+        {status === 'succeeded' ? (
+          images.map((image: ImageType) => (
             <div className={styles.display_images_item} key={image.image_id}>
               <Image
                 src={image.location}

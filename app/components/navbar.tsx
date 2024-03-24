@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useSelector, useDispatch } from "react-redux";
 import { logout, selectUser } from "@/lib/slicers/userSlicer";
 import pinterestLogo from "@/public/Pinterest-logo.png";
+import Search from "./search";
 
 const Navbar = () => {
   const user = useSelector(selectUser);
@@ -40,6 +41,8 @@ const Navbar = () => {
                 </Link>
               </li>
             </ul>
+            {user && user.isAuthenticated ? <Search /> : <></>}
+
             <ul className="hidden md:flex gap-x-2">
               <li>
                 <Link href="/dashboard">

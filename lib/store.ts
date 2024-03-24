@@ -1,10 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import userReducer from "./slicers/userSlicer";
-
+import imageReducer from "./slicers/imageSlicer";
 export const makeStore = () => {
   return configureStore({
     reducer: {
       user: userReducer,
+      image: imageReducer,
     },
   });
 };
