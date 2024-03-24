@@ -28,8 +28,7 @@ export default function AddForm() {
       return;
     }
     try {
-      const tagsArray = tags.split(",").map((tag) => tag.trim());
-      await addImage(image, image_name, tagsArray);
+      await addImage(image, image_name, tags);
       setSuccessMessage("Image added successfully");
       setImage(null);
       setImageName("");

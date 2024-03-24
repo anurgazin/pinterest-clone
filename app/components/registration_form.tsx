@@ -12,21 +12,27 @@ export default function RegistrationForm() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const dispatch = useDispatch();
   const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!email || !username || !password) {
+      setErrorMessage("Please fill out all fields");
+      return;
+    }
     try {
-      const { message, user } = await register(username, email, password);
+      const { user } = await register(username, email, password);
       if (user.user) {
         dispatch(loginRedux(user.user));
+        setErrorMessage("");
         router.push("/dashboard");
       }
     } catch (error) {
       if (error instanceof Error) {
         if (error.message === "Request failed with status code 409") {
-          alert("User with the same email already exists");
+          setErrorMessage("User with the same email already exists");
         }
       }
     }
@@ -39,6 +45,7 @@ export default function RegistrationForm() {
         onSubmit={handleSubmit}
       >
         <h1 className={styles.registration_form_h1}>Registration</h1>
+        {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
         <input
           type="email"
           value={email}

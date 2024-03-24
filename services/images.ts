@@ -11,14 +11,12 @@ export const getImages = async () => {
 export const addImage = async (
   image: File,
   image_name: string,
-  tags: string[]
+  tags: string
 ) => {
   const payload = new FormData();
-  const tagsArray = JSON.stringify(tags).replace(/[\[\]"]/g, "");
-
   payload.append("image", image);
   payload.append("image_name", image_name);
-  payload.append("tags", tagsArray);
+  payload.append("tags", tags);
   const response = await axios.post(API_URL, payload, {
     headers: authHeader(),
   });
