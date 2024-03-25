@@ -1,11 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { UserType } from "@/classes/userType";
-import { getUser, logout as logoutUser } from "@/services/auth";
-import { AppDispatch } from "../store";
 import { getImagesByTags } from "@/services/images";
+import { ImageType } from "@/classes/imageType";
 
 interface ImagesState {
-  images: any[]; // Update the type according to your image structure
+  images: ImageType[];
   status: "idle" | "loading" | "succeeded" | "failed";
   error: string | null;
 }
@@ -18,7 +16,7 @@ const initialState: ImagesState = {
 
 export const fetchImages = createAsyncThunk(
   "images/fetchImages",
-  async (tags: any[]) => {
+  async (tags: string[]) => {
     const response = await getImagesByTags(tags);
     return response;
   }
