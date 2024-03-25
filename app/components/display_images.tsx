@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
@@ -9,12 +9,18 @@ import { fetchImages, selectImages } from "@/lib/slicers/imageSlicer";
 import { selectUser } from "@/lib/slicers/userSlicer";
 import styles from "@/app/components/style/display_images.module.css";
 import Link from "next/link";
+import SingleImage from "./single_image";
 
 export default function DisplayImages() {
   const dispatch = useAppDispatch();
   const user = useAppSelector(selectUser);
   const images = useAppSelector(selectImages);
+  const [selectedImage, setSelectedImage] = useState<ImageType | null>(null);
   const status = useAppSelector((state: any) => state.image.status);
+
+  const handleImageClick = (image: ImageType) => {
+    setSelectedImage(image);
+  };
 
   useEffect(() => {
     dispatch(fetchImages([]));
@@ -25,7 +31,11 @@ export default function DisplayImages() {
         <div className={styles.display_images_container}>
           {status === "succeeded" ? (
             images.map((image: ImageType) => (
-              <div className={styles.display_images_item} key={image.image_id}>
+              <div
+                className={styles.display_images_item}
+                key={image.image_id}
+                onClick={() => handleImageClick(image)}
+              >
                 <Image
                   src={image.location}
                   width={0}
@@ -60,6 +70,13 @@ export default function DisplayImages() {
         <li>
           <Link href="/login">Please, login to watch dashboard</Link>
         </li>
+      )}
+      {selectedImage && (
+        <SingleImage
+          image={selectedImage}
+          user={user.user}
+          onClose={() => setSelectedImage(null)}
+        />
       )}
     </div>
   );

@@ -1,0 +1,56 @@
+.singleImageOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.singleImageContent {
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.singleImageContentParams {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  padding: 5px;
+}
+
+.singleImageContentParams h1 {
+  margin-bottom: 10px;
+  font-size: 25px;
+  color: red;
+}
+
+.singleImageContentParams p {
+  margin-bottom: 10px;
+}
+
+.singleImageContentParamsTags {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.singleImageContentParams button {
+  font-size: 15px;
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.singleImageContentParams button:hover {
+  background-color: rgb(149, 3, 3);
+}
