@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
-import { login as loginRedux } from "@/lib/slicers/userSlicer";
+import { login as loginRedux } from "@/lib/slices/userSlice";
 import { login } from "@/services/auth";
 import Link from "next/link";
 

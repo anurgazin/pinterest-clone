@@ -1,4 +1,4 @@
-import DisplayImages from "../components/display_images";
+import DisplayImages from "@/app/components/display/display_images";
 export default function DashboardPage() {
   return (
     <div className="dashboard-container">

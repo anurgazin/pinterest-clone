@@ -2,7 +2,7 @@
 import { useEffect, useRef } from "react";
 import { Provider } from "react-redux";
 import { makeStore, AppStore } from "../lib/store";
-import { restoreUser } from "@/lib/slicers/userSlicer";
+import { restoreUser } from "@/lib/slices/userSlice";
 
 export default function StoreProvider({
   children,

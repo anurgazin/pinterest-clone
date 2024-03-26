@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { getImagesByTags } from "@/services/images";
 import { useAppDispatch } from "@/lib/hooks";
-import { fetchImages } from "@/lib/slicers/imageSlicer";
+import { fetchImages } from "@/lib/slices/imageSlice";
 
 const Search = () => {
   const [query, setQuery] = useState("");
@@ -11,7 +11,7 @@ const Search = () => {
     // Dispatch action to search images with the provided query
     e.preventDefault();
     try {
-      const tags = query ? query.split(",") : [];
+      const tags = query ? query.toLowerCase().split(",") : [];
       dispatch(fetchImages(tags));
     } catch (error) {}
   };

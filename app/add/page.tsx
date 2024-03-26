@@ -1,8 +1,8 @@
 "use client";
 import { useSelector } from "react-redux";
-import { selectUser } from "@/lib/slicers/userSlicer";
+import { selectUser } from "@/lib/slices/userSlice";
 import Link from "next/link";
-import AddForm from "../components/add_form";
+import AddForm from "../components/forms/add_form";
 export default function AddPage() {
   const user = useSelector(selectUser);
   return (

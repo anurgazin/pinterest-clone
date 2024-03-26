@@ -3,7 +3,6 @@ import { UserType } from "@/classes/userType";
 import { getUser, logout as logoutUser } from "@/services/auth";
 import { AppDispatch } from "../store";
 
-// Define the initial state interface
 interface UserState {
   user: UserType | null;
   isAuthenticated: boolean;

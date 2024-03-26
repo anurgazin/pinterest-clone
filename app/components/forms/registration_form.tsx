@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { register } from "@/services/auth";
 import { useDispatch } from "react-redux";
-import { login as loginRedux } from "@/lib/slicers/userSlicer";
+import { login as loginRedux } from "@/lib/slices/userSlice";
 import styles from "@/app/components/style/registration_form.module.css";
 import Link from "next/link";
 

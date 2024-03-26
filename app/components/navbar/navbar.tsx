@@ -4,7 +4,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useSelector, useDispatch } from "react-redux";
-import { logout, selectUser } from "@/lib/slicers/userSlicer";
+import { logout, selectUser } from "@/lib/slices/userSlice";
 import pinterestLogo from "@/public/Pinterest-logo.png";
 import Search from "./search";
 

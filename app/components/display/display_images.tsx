@@ -5,8 +5,8 @@ import Image from "next/image";
 
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { ImageType } from "@/classes/imageType";
-import { fetchImages, selectImages } from "@/lib/slicers/imageSlicer";
-import { selectUser } from "@/lib/slicers/userSlicer";
+import { fetchImages, selectImages } from "@/lib/slices/imageSlice";
+import { selectUser } from "@/lib/slices/userSlice";
 import styles from "@/app/components/style/display_images.module.css";
 import Link from "next/link";
 import SingleImage from "./single_image";
