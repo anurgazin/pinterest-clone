@@ -28,10 +28,11 @@ export default function SingleImage({ image, user, onClose }: Props) {
           width={0}
           height={0}
           priority
-          sizes="30vw"
+          sizes="50vw"
           style={{
             width: "auto",
             height: "100%",
+            maxHeight:"500px",
             borderRadius: "16px",
           }}
           alt={image.name}
