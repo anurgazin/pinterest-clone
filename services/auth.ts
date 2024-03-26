@@ -1,8 +1,7 @@
 import axios from "axios";
 import { getCookie, removeCookie, setCookie } from "typescript-cookie";
-import { UserType } from "@/classes/userType";
 
-const USERS_API_URL = "http://localhost:8000/users/";
+const USERS_API_URL = process.env.NEXT_PUBLIC_API_DOMAIN + "users/";
 
 export const register = async (
   username: string,

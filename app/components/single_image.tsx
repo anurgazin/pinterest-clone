@@ -11,7 +11,11 @@ type Props = {
 
 export default function SingleImage({ image, user, onClose }: Props) {
   const handleClickOutside = (event: React.MouseEvent<HTMLDivElement>) => {
-    if ((event.target as HTMLElement).classList.contains(styles.modalOverlay)) {
+    if (
+      (event.target as HTMLElement).classList.contains(
+        styles.singleImageOverlay
+      )
+    ) {
       onClose();
     }
   };

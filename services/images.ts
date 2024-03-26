@@ -1,7 +1,7 @@
 import axios from "axios";
 import authHeader from "./authHeader";
 
-const API_URL = "http://localhost:8000/images/";
+const API_URL = process.env.NEXT_PUBLIC_API_DOMAIN + "images/";
 
 export const getImages = async () => {
   const response = await axios.get(API_URL, { headers: authHeader() });
