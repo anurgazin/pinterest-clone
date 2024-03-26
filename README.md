@@ -9,6 +9,7 @@ Front-end created with [Next.js](https://nextjs.org/) and bootstrapped with [`cr
 For state management I am using [React-Redux](https://react-redux.js.org/).
 
 ## Back-end part
+
 Back-end uses ExpressJs and Amazon Web Services(DynamoDB, S3 bucket)
 Read more about back-end [Here](https://github.com/anurgazin/pinterest-clone-backend)
 
@@ -26,8 +27,6 @@ pnpm dev
 bun dev
 ```
 
-## Deploy on Vercel
+## Deployed on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+This project deployed on Vercel [Link](https://pinterest-clone-gamma-five.vercel.app/)
