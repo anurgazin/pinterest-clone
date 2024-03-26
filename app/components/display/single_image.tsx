@@ -30,7 +30,7 @@ export default function SingleImage({ image, user, onClose }: Props) {
           priority
           sizes="30vw"
           style={{
-            width: "100%",
+            width: "auto",
             height: "100%",
             borderRadius: "16px",
           }}
