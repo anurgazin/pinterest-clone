@@ -32,7 +32,7 @@ export default function SingleImage({ image, user, onClose }: Props) {
           style={{
             width: "auto",
             height: "100%",
-            maxHeight:"500px",
+            maxHeight:"600px",
             borderRadius: "16px",
           }}
           alt={image.name}
